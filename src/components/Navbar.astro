@@ -1,0 +1,19 @@
+---
+// Componente de barra de navegación para el portfolio
+const sections = [
+  { id: 'about', label: 'Sobre mí' },
+  { id: 'projects', label: 'Proyectos' },
+  { id: 'studies', label: 'Estudios y Experiencia' },
+  { id: 'contact', label: 'Contacto' },
+];
+---
+<nav class="w-full bg-darkBlue-50/70 backdrop-blur-lg shadow-lg fixed top-0 left-0 z-50 border-b border-darkBlue-200">
+  <div class="max-w-5xl mx-auto flex justify-between items-center px-6 py-3">
+    <span class="font-bold text-xl text-darkBlue-700 tracking-wide drop-shadow">Mi Portfolio</span>
+    <ul class="flex gap-6">
+      {sections.map(section => (
+        <li><a href={`#${section.id}`} class="hover:text-darkBlue-700 text-darkBlue-900 font-medium transition-colors px-2 py-1 rounded hover:bg-darkBlue-200/40 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/50">{section.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>

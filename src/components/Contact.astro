@@ -1,0 +1,22 @@
+---
+// Sección de contacto con formulario
+---
+<section id="contact" class="min-h-screen flex flex-col justify-center items-center py-32 bg-white">
+  <h2 class="text-4xl font-bold mb-6 text-darkBlue-800 drop-shadow">Contacto</h2>
+  <form class="w-full max-w-md bg-darkBlue-50 p-8 rounded-2xl shadow border border-darkBlue-200 flex flex-col gap-4" name="contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact" />
+    <label class="flex flex-col gap-1">
+      <span class="text-darkBlue-900">Nombre</span>
+      <input name="name" type="text" required class="p-2 rounded border border-darkBlue-200 focus:outline-darkBlue-500 bg-white/80" />
+    </label>
+    <label class="flex flex-col gap-1">
+      <span class="text-darkBlue-900">Email</span>
+      <input name="email" type="email" required class="p-2 rounded border border-darkBlue-200 focus:outline-darkBlue-500 bg-white/80" />
+    </label>
+    <label class="flex flex-col gap-1">
+      <span class="text-darkBlue-900">Mensaje</span>
+      <textarea name="message" required rows="4" class="p-2 rounded border border-darkBlue-200 focus:outline-darkBlue-500 bg-white/80"></textarea>
+    </label>
+    <button type="submit" class="bg-darkBlue-700 text-white py-2 rounded hover:bg-darkBlue-800 transition-colors font-semibold">Enviar</button>
+  </form>
+</section>

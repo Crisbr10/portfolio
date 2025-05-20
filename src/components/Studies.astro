@@ -1,0 +1,28 @@
+---
+// Sección de estudios y experiencia
+const studies = [
+  {
+    title: 'Grado en Ingeniería Informática',
+    place: 'Universidad Ejemplo',
+    year: '2018 - 2022'
+  },
+  {
+    title: 'Curso de Desarrollo Web',
+    place: 'Plataforma Online',
+    year: '2023'
+  },
+  // Agrega más estudios o experiencias aquí
+];
+---
+<section id="studies" class="min-h-screen flex flex-col justify-center items-center py-32 bg-gradient-to-b from-white to-darkBlue-50">
+  <h2 class="text-4xl font-bold mb-6 text-darkBlue-800 drop-shadow">Estudios y Experiencia</h2>
+  <ul class="max-w-2xl w-full">
+    {studies.map(study => (
+      <li class="mb-6 p-6 bg-darkBlue-50 rounded-2xl shadow border border-darkBlue-200">
+        <h3 class="text-lg font-semibold text-darkBlue-700">{study.title}</h3>
+        <p class="text-darkBlue-900">{study.place}</p>
+        <span class="text-sm text-darkBlue-500">{study.year}</span>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,28 @@
+---
+// Sección de proyectos
+const projects = [
+  {
+    title: 'Proyecto 1',
+    description: 'Descripción breve del proyecto 1.',
+    link: '#'
+  },
+  {
+    title: 'Proyecto 2',
+    description: 'Descripción breve del proyecto 2.',
+    link: '#'
+  },
+  // Agrega más proyectos aquí
+];
+---
+<section id="projects" class="min-h-screen flex flex-col justify-center items-center py-32 bg-white">
+  <h2 class="text-4xl font-bold mb-6 text-darkBlue-800 drop-shadow">Proyectos</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+    {projects.map(project => (
+      <div class="p-6 rounded-2xl shadow bg-darkBlue-50 border border-darkBlue-200 hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-semibold mb-2 text-darkBlue-700">{project.title}</h3>
+        <p class="mb-4 text-darkBlue-900">{project.description}</p>
+        <a href={project.link} class="text-darkBlue-500 hover:underline font-medium">Ver más</a>
+      </div>
+    ))}
+  </div>
+</section>
