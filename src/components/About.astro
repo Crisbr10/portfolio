@@ -1,19 +1,13 @@
----
-// Sección sobre mí
----
 <section class="relative py-32 md:py-40 min-h-screen flex flex-col items-center justify-center bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
   <div class="absolute inset-0 bg-darkBlue-900">
     <div class="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-darkBlue-800 rounded-full opacity-20 blur-[100px]"></div>
     <div class="absolute bottom-1/3 right-1/3 w-1/3 h-1/3 bg-darkBlue-700 rounded-full opacity-20 blur-[80px]"></div>
-  </div>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10">
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-darkBlue-50 mb-6">Full Stack Developer</h1>
-    <p class="max-w-[600px] text-lg md:text-2xl text-darkBlue-200 mb-10">
-      Building beautiful, functional, and user-friendly web applications with modern technologies
+  </div>  <div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center relative z-10">
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-darkBlue-50 mb-6">Full Stack Developer</h1>    <p class="max-w-[600px] text-lg md:text-2xl text-darkBlue-200 mb-10">
+      Creando aplicaciones web hermosas, funcionales y amigables con tecnologías modernas
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-      <a href="#projects" class="bg-darkBlue-700 text-darkBlue-50 font-semibold px-8 py-3 rounded transition-all border-2 border-darkBlue-700 shadow-sm hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30">View My Work</a>
-      <a href="#" class="bg-darkBlue-700 text-darkBlue-50 font-semibold px-8 py-3 rounded transition-all border-2 border-darkBlue-700 shadow-sm hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30 cursor-not-allowed opacity-60">Download Resume</a>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">      <a href="#projects" class="bg-darkBlue-700 text-darkBlue-50 font-semibold px-8 py-3 rounded transition-all border-2 border-darkBlue-700 shadow-sm hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30">Ver mi trabajo</a>
+      <a href="#" class="bg-darkBlue-700 text-darkBlue-50 font-semibold px-8 py-3 rounded transition-all border-2 border-darkBlue-700 shadow-sm hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30 cursor-not-allowed opacity-60">Descargar CV</a>
     </div>
     <div class="flex flex-col items-center gap-4 mb-8">
       <div class="flex justify-center gap-8">
@@ -30,16 +24,68 @@
       <div class="mt-4">
         <a href="#about" class="flex flex-col items-center">
           <svg class="h-8 w-8 text-darkBlue-200 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          <span class="sr-only">Scroll Down</span>
+          <span class="sr-only">Desplazar hacia abajo</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="about" class="min-h-screen flex flex-col justify-center items-center py-32 bg-gradient-to-b from-darkBlue-50 to-darkBlue-200">
-  <h2 class="text-4xl font-bold mb-6 text-darkBlue-800 drop-shadow">Sobre mí</h2>
-  <p class="max-w-2xl text-center text-lg text-darkBlue-900 bg-white/60 rounded-xl p-6 shadow">
-    ¡Hola! Soy [Tu Nombre], desarrollador web apasionado por crear experiencias digitales modernas y funcionales. Me especializo en tecnologías como JavaScript, Astro, y Tailwind CSS. Me encanta aprender y enfrentar nuevos retos.
-  </p>
+<section id="about" class="relative min-h-screen flex flex-col items-center justify-center py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
+  <div class="absolute inset-0 bg-darkBlue-900">
+    <div class="absolute top-1/4 left-1/4 w-1/2 h-1/2 bg-darkBlue-800 rounded-full opacity-20 blur-[100px]"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-1/3 h-1/3 bg-darkBlue-700 rounded-full opacity-20 blur-[80px]"></div>
+  </div>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-darkBlue-50 drop-shadow text-center">Sobre mí</h2>
+    
+    <div class="flex flex-col md:flex-row items-center gap-10 justify-between">
+      <!-- Foto de perfil con efecto de borde iluminado -->
+      <div class="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mb-8 md:mb-0">
+        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-darkBlue-500 to-darkBlue-400 animate-pulse blur-md opacity-60"></div>
+        <div class="absolute inset-0 rounded-full bg-darkBlue-800 border-2 border-darkBlue-700"></div>
+        <div class="relative rounded-full w-full h-full overflow-hidden flex items-center justify-center bg-darkBlue-800">
+          <svg class="h-48 w-48 text-darkBlue-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Información personal -->
+      <div class="flex-1">
+        <div class="bg-darkBlue-800/60 rounded-xl p-6 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm">          <p class="text-lg md:text-xl text-darkBlue-100 mb-4">
+            ¡Hola! Soy <span class="font-semibold text-darkBlue-50">Cristhian</span>, desarrollador apasionado por crear experiencias digitales modernas y funcionales.
+          </p>          <p class="text-lg md:text-xl text-darkBlue-200 mb-4">
+            Me especializo en el desarrollo de aplicaciones con Velneo, desarrollo web y automatizaciones con N8N. Me encanta aprender y enfrentar nuevos retos.
+          </p>
+          <ul class="mt-6 space-y-2">
+            <li class="flex items-center text-darkBlue-200">              <svg class="w-5 h-5 mr-2 text-darkBlue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.851 1.22c.6.285 1.252.434 1.942.434 2.243 0 4.239-1.8 4.545-4.021l.352-.151a1 1 0 000-1.838l-7-3z"></path>
+                <path d="M9.786 3.528l-.001-.003-.002.002.003.001zM14.5 7.988l-2.477 1.061 2.477 1.06zM6 9.988l2.477-1.061L6 7.865z"></path>
+              </svg>
+              <span>Desarrollo Full Stack</span>
+            </li>            <li class="flex items-center text-darkBlue-200">
+              <svg class="w-5 h-5 mr-2 text-darkBlue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Desarrollo de aplicaciones con Velneo</span>
+            </li>            <li class="flex items-center text-darkBlue-200">
+              <svg class="w-5 h-5 mr-2 text-darkBlue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"></path>
+                <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"></path>
+                <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"></path>
+              </svg>
+              <span>Automatizaciones con N8N</span>
+            </li>
+            <li class="flex items-center text-darkBlue-200">
+              <svg class="w-5 h-5 mr-2 text-darkBlue-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+              <span>Desarrollo Web Frontend & Backend</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

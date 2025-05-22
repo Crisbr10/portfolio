@@ -19,4 +19,8 @@ export default {
     },
   },
   plugins: [],
+  // Optimizaciones para disminuir el tamaño final del CSS
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

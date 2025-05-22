@@ -1,28 +1,140 @@
 ---
 // Sección de estudios y experiencia
-const studies = [
-  {
-    title: 'Grado en Ingeniería Informática',
-    place: 'Universidad Ejemplo',
-    year: '2018 - 2022'
+const studies = [  {
+    title: 'Desarrollo de Aplicaciones Web',
+    place: 'Campus Training',
+    year: '2021 - 2022',
+    description: 'Formación especializada en desarrollo web frontend y backend. Tecnologías principales: HTML5, CSS3, JavaScript, PHP y MySQL.',
+    icon: 'education'
   },
   {
-    title: 'Curso de Desarrollo Web',
-    place: 'Plataforma Online',
-    year: '2023'
-  },
-  // Agrega más estudios o experiencias aquí
+    title: 'Certificado de Profesionalidad',
+    place: 'IFCD0210 - Desarrollo de Aplicaciones Web',
+    year: '2022 - 2023',
+    description: 'Certificación oficial en competencias para desarrollar, implementar y mantener aplicaciones web con diferentes tecnologías, independientemente de su modelo o plataforma.',
+    icon: 'certificate'
+  },  {
+    title: 'Prácticas Profesionales',
+    place: 'Kiwop - Empresa de Desarrollo Web',
+    year: '2023',
+    description: 'Experiencia práctica en entorno real de desarrollo web, participando en proyectos de desarrollo frontend y backend con soluciones a medida para clientes.',
+    icon: 'internship'
+  },  {
+    title: 'Desarrollador de Software',
+    place: 'Rubicon Software',
+    year: '2023 - Presente',
+    description: 'Desarrollo y mantenimiento de software de gestión empresarial utilizando entornos de desarrollo low code (Velneo) y JavaScript, implementación de nuevas funcionalidades y soporte a clientes.',
+    icon: 'work'
+  }
 ];
 ---
-<section id="studies" class="min-h-screen flex flex-col justify-center items-center py-32 bg-gradient-to-b from-white to-darkBlue-50">
-  <h2 class="text-4xl font-bold mb-6 text-darkBlue-800 drop-shadow">Estudios y Experiencia</h2>
-  <ul class="max-w-2xl w-full">
-    {studies.map(study => (
-      <li class="mb-6 p-6 bg-darkBlue-50 rounded-2xl shadow border border-darkBlue-200">
-        <h3 class="text-lg font-semibold text-darkBlue-700">{study.title}</h3>
-        <p class="text-darkBlue-900">{study.place}</p>
-        <span class="text-sm text-darkBlue-500">{study.year}</span>
-      </li>
-    ))}
-  </ul>
+<section id="studies" class="relative min-h-screen flex flex-col justify-center items-center py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
+  <!-- Background effect -->
+  <div class="absolute inset-0 bg-darkBlue-900">
+    <div class="absolute top-1/4 right-1/3 w-1/3 h-1/3 bg-darkBlue-800 rounded-full opacity-20 blur-[100px]"></div>
+    <div class="absolute bottom-1/3 left-1/4 w-1/3 h-1/3 bg-darkBlue-700 rounded-full opacity-20 blur-[80px]"></div>
+  </div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-darkBlue-50 drop-shadow text-center">Formación y Experiencia</h2>
+    <p class="text-center text-darkBlue-200 max-w-2xl mx-auto mb-16">Mi trayectoria profesional y formativa en desarrollo de software, desde la formación especializada hasta la experiencia laboral en entornos profesionales.</p>
+      <div class="relative border-l-2 border-darkBlue-700/70 ml-6 md:ml-0 md:mx-auto max-w-2xl">
+      {studies.map((study, index) => (
+        <div class="mb-12 relative pl-8 md:pl-0 md:ml-0 md:grid md:grid-cols-5 md:gap-4">
+          <!-- Timeline dot with icon -->
+          <div class="absolute -left-[11px] md:left-[calc(40%-11px)] mt-1.5 z-10">
+            <div class="h-[22px] w-[22px] rounded-full bg-darkBlue-500 border-2 border-darkBlue-700 shadow-lg shadow-darkBlue-500/30 flex items-center justify-center">
+              {study.icon === 'education' && (
+                <svg class="h-3 w-3 text-darkBlue-900" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838l-2.851 1.22c.6.285 1.252.434 1.942.434 2.243 0 4.239-1.8 4.545-4.021l.352-.151a1 1 0 000-1.838l-7-3z"></path>
+                  <path d="M9.786 3.528l-.001-.003-.002.002.003.001zM14.5 7.988l-2.477 1.061 2.477 1.06zM6 9.988l2.477-1.061L6 7.865z"></path>
+                </svg>
+              )}
+              {study.icon === 'certificate' && (
+                <svg class="h-3 w-3 text-darkBlue-900" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+              )}
+              {study.icon === 'internship' && (
+                <svg class="h-3 w-3 text-darkBlue-900" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                </svg>
+              )}
+              {study.icon === 'work' && (
+                <svg class="h-3 w-3 text-darkBlue-900" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                  <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
+                </svg>
+              )}
+            </div>
+          </div>
+          
+          <!-- Left side (dates) - only visible on md+ -->
+          <div class="hidden md:block md:col-span-2 md:text-right pr-8 pt-0.5">
+            <span class="inline-block bg-darkBlue-700/60 text-darkBlue-50 px-3 py-1 rounded-full text-sm font-medium">{study.year}</span>
+          </div>
+            <!-- Right side (content) -->
+          <div class="md:col-span-3">
+            <div class={`bg-darkBlue-800/60 rounded-xl p-6 shadow-lg border ${study.icon === 'work' ? 'border-darkBlue-500/50 shadow-darkBlue-500/10' : 'border-darkBlue-700/50'} backdrop-blur-sm hover:shadow-xl hover:shadow-darkBlue-700/20 transition-all duration-300`}>
+              {/* Timeline dot on mobile */}
+              <span class="md:hidden text-darkBlue-500 text-sm font-medium mb-2 inline-block">{study.year}</span>
+              
+              <h3 class="text-xl font-semibold text-darkBlue-50">{study.title}</h3>
+              <p class="text-darkBlue-200 font-medium">{study.place}</p>
+              
+              {study.icon === 'work' && (
+                <span class="inline-block mt-2 mb-2 bg-darkBlue-500/20 border border-darkBlue-500/30 px-3 py-1 rounded-full text-xs font-medium text-darkBlue-200">Posición Actual</span>
+              )}
+              
+              <p class="mt-2 text-darkBlue-200">{study.description}</p>
+
+              <!-- Badges para tecnologías o habilidades -->              {study.icon === 'education' && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">HTML5</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">CSS3</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">MySQL</span>
+                </div>
+              )}
+              {study.icon === 'certificate' && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Bases de Datos</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Diseño Web</span>
+                </div>
+              )}              {study.icon === 'internship' && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">WordPress</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
+                </div>
+              )}              {study.icon === 'work' && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Velneo</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Low Code</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">ERP</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>      ))}
+    </div>
+    
+    <!-- Botón para descargar CV completo -->
+    <div class="flex justify-center mt-16">
+      <a 
+        href="#" 
+        class="group relative inline-flex items-center gap-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all duration-300 border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30"
+      >
+        <svg class="w-5 h-5 text-darkBlue-300 group-hover:text-darkBlue-200 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+        Descargar Curriculum Completo
+        <span class="absolute -top-1 -right-1 h-3 w-3 bg-darkBlue-500 rounded-full animate-ping opacity-75"></span>
+      </a>
+    </div>
+  </div>
 </section>

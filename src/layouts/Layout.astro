@@ -1,14 +1,29 @@
+---
+import "../styles/global.css";
+
+// Datos del sitio para SEO
+const siteName = "CrisBR.dev | Desarrollador Full Stack";
+const siteDescription = "Portfolio profesional de desarrollo web full stack. Especialista en crear experiencias digitales excepcionales con tecnologías modernas.";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		---
-        import "../styles/global.css";
-        ---
+		<meta name="description" content={siteDescription} />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="CrisBR.dev" />
+		<meta property="og:title" content={siteName} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:type" content="website" />
+		<title>{siteName}</title>
+		<!-- Estrategia de precarga para fuentes -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	</head>
 	</head>
 	<body class="bg-darkBlue-900 text-darkBlue-50 min-h-screen">
 		<slot />
