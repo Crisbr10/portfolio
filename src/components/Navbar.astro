@@ -7,17 +7,74 @@ const sections = [
 ];
 ---
 <nav class="w-full fixed top-0 left-0 z-50 bg-darkBlue-900/70 backdrop-blur-lg border-b border-darkBlue-800">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-8 py-4">
-    <div class="flex-1 flex items-center">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8 py-4">
+    <!-- Logo -->
+    <div class="flex items-center">
       <span class="font-extrabold text-xl text-darkBlue-50 tracking-wide">CrisBR.dev</span>
     </div>
-    <ul class="flex gap-10 justify-center flex-1">
-      {sections.map(section => (
-        <li><a href={`#${section.id}`} class="text-darkBlue-50 hover:text-darkBlue-200 font-medium transition-colors px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-darkBlue-500/50">{section.label}</a></li>
-      ))}
-    </ul>
-    <div class="flex-1 flex justify-end">
-      <a href="#contact" class="bg-darkBlue-700 hover:bg-darkBlue-500 text-darkBlue-50 font-semibold px-5 py-2 rounded shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30">Contáctame</a>
+
+    <!-- Menú para escritorio -->
+    <div class="hidden md:flex items-center justify-between flex-1 pl-10">
+      <ul class="flex gap-8 justify-center">
+        {sections.map(section => (
+          <li><a href={`#${section.id}`} class="text-darkBlue-50 hover:text-darkBlue-200 font-medium transition-colors px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-darkBlue-500/50">{section.label}</a></li>
+        ))}
+      </ul>
+      <div>
+        <a href="#contact" class="bg-darkBlue-700 hover:bg-darkBlue-500 text-darkBlue-50 font-semibold px-5 py-2 rounded shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30">Contáctame</a>
+      </div>
+    </div>
+
+    <!-- Botón menú móvil -->
+    <button id="menu-toggle" class="md:hidden text-darkBlue-50 focus:outline-none" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path id="menu-icon" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menú móvil (oculto por defecto) -->
+  <div id="mobile-menu" class="hidden bg-darkBlue-800/95 backdrop-blur-lg md:hidden">
+    <div class="px-4 py-5 border-t border-darkBlue-700/40">
+      <ul class="flex flex-col space-y-4">
+        {sections.map(section => (
+          <li>
+            <a href={`#${section.id}`} class="block text-darkBlue-50 hover:text-darkBlue-200 font-medium py-2 transition-colors rounded focus:outline-none focus:ring-2 focus:ring-darkBlue-500/50">{section.label}</a>
+          </li>
+        ))}
+        <li class="pt-2">
+          <a href="#contact" class="block w-full text-center bg-darkBlue-700 hover:bg-darkBlue-500 text-darkBlue-50 font-semibold px-5 py-3 rounded shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-800/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30">Contáctame</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
+
+<script>
+  // JavaScript para controlar el menú móvil
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    if (menuToggle && mobileMenu && menuIcon && closeIcon) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+      
+      // Cerrar menú al hacer clic en un enlace
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        });
+      });
+    }
+  });
+</script>

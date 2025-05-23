@@ -31,7 +31,7 @@ const contactMethods = [
   },
 ];
 ---
-<section id="contact" class="relative min-h-screen flex flex-col justify-center items-center py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
+<section id="contact" class="relative min-h-screen flex flex-col justify-center items-center py-20 sm:py-24 md:py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
   <!-- Background effect -->
   <div class="absolute inset-0 bg-darkBlue-900">
     <div class="absolute top-1/3 left-1/4 w-1/2 h-1/2 bg-darkBlue-800 rounded-full opacity-20 blur-[100px]"></div>
@@ -39,13 +39,14 @@ const contactMethods = [
   </div>
   
   <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
-    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-darkBlue-50 drop-shadow text-center">Contacto</h2>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-10 text-darkBlue-50 drop-shadow text-center">Contacto</h2>
     
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
       <!-- Contact form -->
       <div class="w-full">
-        <div class="bg-darkBlue-800/60 rounded-xl p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm">
-          <h3 class="text-2xl font-bold mb-6 text-darkBlue-50">Envíame un mensaje</h3>          <form class="flex flex-col gap-5" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <div class="bg-darkBlue-800/60 rounded-xl p-5 sm:p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-darkBlue-50">Envíame un mensaje</h3>
+          <form class="flex flex-col gap-4 sm:gap-5" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact" />
             <div class="hidden">
               <label>
@@ -53,7 +54,7 @@ const contactMethods = [
               </label>
             </div>
             
-            <div class="flex flex-col md:flex-row gap-5">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
               <label class="flex flex-col gap-2 flex-1">
                 <span class="text-darkBlue-50 font-medium">Nombre</span>
                 <input 
@@ -78,7 +79,7 @@ const contactMethods = [
                 />
               </label>
             </div>
-              <label class="flex flex-col gap-2">
+            <label class="flex flex-col gap-2">
               <span class="text-darkBlue-50 font-medium">Asunto</span>
               <input 
                 name="subject" 
@@ -89,20 +90,20 @@ const contactMethods = [
                 placeholder="Asunto del mensaje"
               />
             </label>
-              <label class="flex flex-col gap-2">
+            <label class="flex flex-col gap-2">
               <span class="text-darkBlue-50 font-medium">Mensaje</span>
               <textarea 
                 name="message" 
                 required 
                 aria-required="true"
-                rows="8" 
+                rows="6"
                 class="p-3 rounded-lg border border-darkBlue-700/50 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/50 bg-darkBlue-800/70 text-darkBlue-50 placeholder-darkBlue-400 resize-none" 
                 placeholder="Escribe tu mensaje aquí..."
               ></textarea>
             </label>
-              <button 
+            <button 
               type="submit" 
-              class="mt-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30"
+              class="mt-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30 w-full sm:w-auto sm:self-end"
               aria-label="Enviar mensaje de contacto"
             >
               Enviar Mensaje
@@ -113,38 +114,42 @@ const contactMethods = [
       
       <!-- Contact info -->
       <div class="w-full">
-        <div class="bg-darkBlue-800/60 rounded-xl p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm h-full">          <h3 class="text-2xl font-bold mb-6 text-darkBlue-50">Información de contacto</h3>
-          <p class="text-darkBlue-50 mb-8">
+        <div class="bg-darkBlue-800/60 rounded-xl p-5 sm:p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm h-full">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-darkBlue-50">Información de contacto</h3>
+          <p class="text-darkBlue-50 mb-6 sm:mb-8 text-sm sm:text-base">
             ¿Tienes un proyecto interesante o simplemente quieres charlar? No dudes en contactarme por cualquiera de estos medios.
           </p>
-            <div class="space-y-6">
+          <div class="space-y-4 sm:space-y-6">
             {contactMethods.map(method => (
-              <a href={method.link} class="flex items-start gap-4 p-4 rounded-lg bg-darkBlue-700/30 hover:bg-darkBlue-700/50 transition-colors border border-darkBlue-700/50" title={method.description} aria-label={method.description}>{method.icon === "mail" && (
-                  <svg class="w-6 h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <a href={method.link} class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-darkBlue-700/30 hover:bg-darkBlue-700/50 transition-colors border border-darkBlue-700/50" title={method.description} aria-label={method.description}>
+                {method.icon === "mail" && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25a.85.85 0 1 1 .9-1.44L12 11l6.7-4.19a.85.85 0 1 1 .9 1.44z"/>
                   </svg>
                 )}
                 {method.icon === "linkedin" && (
-                  <svg class="w-6 h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76 1.75.79 1.75 1.76-.784 1.76-1.75 1.76zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.38v4.59h-3v-9h2.89v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.74z"/>
                   </svg>
-                )}                {method.icon === "github" && (
-                  <svg class="w-6 h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                )}
+                {method.icon === "github" && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.847-2.337 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.421-.012 2.751 0 .267.18.577.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/>
                   </svg>
                 )}
                 {method.icon === "whatsapp" && (
-                  <svg class="w-6 h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                 )}
                 {method.icon === "location" && (
-                  <svg class="w-6 h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
-                )}<div>
-                  <h4 class="text-darkBlue-50 font-medium">{method.title}</h4>
-                  <p class="text-darkBlue-50">{method.value}</p>
+                )}
+                <div>
+                  <h4 class="text-darkBlue-50 font-medium text-sm sm:text-base">{method.title}</h4>
+                  <p class="text-darkBlue-50 text-xs sm:text-sm">{method.value}</p>
                 </div>
               </a>
             ))}

@@ -28,18 +28,18 @@ const studies = [  {
   }
 ];
 ---
-<section id="studies" class="relative min-h-screen flex flex-col justify-center items-center py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
+<section id="studies" class="relative min-h-screen flex flex-col justify-center items-center py-20 sm:py-24 md:py-32 bg-darkBlue-900 text-darkBlue-50 overflow-hidden">
   <!-- Background effect -->
   <div class="absolute inset-0 bg-darkBlue-900">
     <div class="absolute top-1/4 right-1/3 w-1/3 h-1/3 bg-darkBlue-800 rounded-full opacity-20 blur-[100px]"></div>
     <div class="absolute bottom-1/3 left-1/4 w-1/3 h-1/3 bg-darkBlue-700 rounded-full opacity-20 blur-[80px]"></div>
   </div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 w-full">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-darkBlue-50 drop-shadow text-center">Formación y Experiencia</h2>
-    <p class="text-center text-darkBlue-200 max-w-2xl mx-auto mb-16">Mi trayectoria profesional y formativa en desarrollo de software, desde la formación especializada hasta la experiencia laboral en entornos profesionales.</p>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-darkBlue-50 drop-shadow text-center">Formación y Experiencia</h2>
+    <p class="text-center text-darkBlue-200 max-w-2xl mx-auto mb-10 sm:mb-16 text-sm sm:text-base">Mi trayectoria profesional y formativa en desarrollo de software, desde la formación especializada hasta la experiencia laboral en entornos profesionales.</p>
       <div class="relative border-l-2 border-darkBlue-700/70 ml-6 md:ml-0 md:mx-auto max-w-2xl">
       {studies.map((study, index) => (
-        <div class="mb-12 relative pl-8 md:pl-0 md:ml-0 md:grid md:grid-cols-5 md:gap-4">
+        <div class="mb-8 sm:mb-12 relative pl-8 md:pl-0 md:ml-0 md:grid md:grid-cols-5 md:gap-4">
           <!-- Timeline dot with icon -->
           <div class="absolute -left-[11px] md:left-[calc(40%-11px)] mt-1.5 z-10">
             <div class="h-[22px] w-[22px] rounded-full bg-darkBlue-500 border-2 border-darkBlue-700 shadow-lg shadow-darkBlue-500/30 flex items-center justify-center">
@@ -74,62 +74,66 @@ const studies = [  {
           </div>
             <!-- Right side (content) -->
           <div class="md:col-span-3">
-            <div class={`bg-darkBlue-800/60 rounded-xl p-6 shadow-lg border ${study.icon === 'work' ? 'border-darkBlue-500/50 shadow-darkBlue-500/10' : 'border-darkBlue-700/50'} backdrop-blur-sm hover:shadow-xl hover:shadow-darkBlue-700/20 transition-all duration-300`}>
+            <div class={`bg-darkBlue-800/60 rounded-xl p-4 sm:p-6 shadow-lg border ${study.icon === 'work' ? 'border-darkBlue-500/50 shadow-darkBlue-500/10' : 'border-darkBlue-700/50'} backdrop-blur-sm hover:shadow-xl hover:shadow-darkBlue-700/20 transition-all duration-300`}>
               {/* Timeline dot on mobile */}
               <span class="md:hidden text-darkBlue-500 text-sm font-medium mb-2 inline-block">{study.year}</span>
               
-              <h3 class="text-xl font-semibold text-darkBlue-50">{study.title}</h3>
-              <p class="text-darkBlue-200 font-medium">{study.place}</p>
+              <h3 class="text-lg sm:text-xl font-semibold text-darkBlue-50">{study.title}</h3>
+              <p class="text-darkBlue-200 font-medium text-sm sm:text-base">{study.place}</p>
               
               {study.icon === 'work' && (
                 <span class="inline-block mt-2 mb-2 bg-darkBlue-500/20 border border-darkBlue-500/30 px-3 py-1 rounded-full text-xs font-medium text-darkBlue-200">Posición Actual</span>
               )}
               
-              <p class="mt-2 text-darkBlue-200">{study.description}</p>
+              <p class="mt-2 text-darkBlue-200 text-xs sm:text-sm">{study.description}</p>
 
-              <!-- Badges para tecnologías o habilidades -->              {study.icon === 'education' && (
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">HTML5</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">CSS3</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">MySQL</span>
+              <!-- Badges para tecnologías o habilidades -->              
+              {study.icon === 'education' && (
+                <div class="flex flex-wrap gap-1 sm:gap-2 mt-3 sm:mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">HTML5</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">CSS3</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">MySQL</span>
                 </div>
               )}
               {study.icon === 'certificate' && (
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Bases de Datos</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Diseño Web</span>
+                <div class="flex flex-wrap gap-1 sm:gap-2 mt-3 sm:mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Bases de Datos</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Diseño Web</span>
                 </div>
-              )}              {study.icon === 'internship' && (
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">WordPress</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
+              )}              
+              {study.icon === 'internship' && (
+                <div class="flex flex-wrap gap-1 sm:gap-2 mt-3 sm:mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">WordPress</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Frontend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Backend</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">PHP</span>
                 </div>
-              )}              {study.icon === 'work' && (
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Velneo</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">Low Code</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
-                  <span class="bg-darkBlue-700/60 px-2 py-1 rounded-full text-darkBlue-50 text-xs">ERP</span>
+              )}              
+              {study.icon === 'work' && (
+                <div class="flex flex-wrap gap-1 sm:gap-2 mt-3 sm:mt-4">
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Velneo</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">Low Code</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">JavaScript</span>
+                  <span class="bg-darkBlue-700/60 px-2 py-0.5 sm:py-1 rounded-full text-darkBlue-50 text-xs">ERP</span>
                 </div>
               )}
             </div>
           </div>
-        </div>      ))}
+        </div>      
+      ))}
     </div>
     
     <!-- Botón para descargar CV completo -->
-    <div class="flex justify-center mt-16">
+    <div class="flex justify-center mt-10 sm:mt-16">
       <a 
         href="#" 
-        class="group relative inline-flex items-center gap-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all duration-300 border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30"
+        class="group relative inline-flex items-center gap-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg shadow-sm transition-all duration-300 border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30 text-sm sm:text-base"
       >
-        <svg class="w-5 h-5 text-darkBlue-300 group-hover:text-darkBlue-200 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-darkBlue-300 group-hover:text-darkBlue-200 transition-colors" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
         </svg>
         Descargar Curriculum Completo
