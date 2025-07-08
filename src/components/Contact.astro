@@ -46,14 +46,7 @@ const contactMethods = [
       <div class="w-full">
         <div class="bg-darkBlue-800/60 rounded-xl p-5 sm:p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm">
           <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-darkBlue-50">Envíame un mensaje</h3>
-          <form class="flex flex-col gap-4 sm:gap-5" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="contact" />
-            <div class="hidden">
-              <label>
-                No rellenar esto si eres humano: <input name="bot-field" />
-              </label>
-            </div>
-            
+          <form id="contactForm" class="flex flex-col gap-4 sm:gap-5">
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
               <label class="flex flex-col gap-2 flex-1">
                 <span class="text-darkBlue-50 font-medium">Nombre</span>
@@ -101,13 +94,18 @@ const contactMethods = [
                 placeholder="Escribe tu mensaje aquí..."
               ></textarea>
             </label>
+            
             <button 
-              type="submit" 
-              class="mt-2 bg-darkBlue-700 hover:bg-darkBlue-600 text-darkBlue-50 font-semibold py-3 px-6 rounded-lg shadow-sm transition-all border-2 border-darkBlue-700 hover:shadow-lg hover:shadow-darkBlue-600/20 focus:outline-none focus:ring-2 focus:ring-darkBlue-500/30 w-full sm:w-auto sm:self-end"
-              aria-label="Enviar mensaje de contacto"
+              type="submit"
+              class="w-full py-3 px-6 bg-darkBlue-600 hover:bg-darkBlue-500 text-darkBlue-50 rounded-lg font-semibold transition-colors duration-300 mt-2"
             >
-              Enviar Mensaje
+              Enviar mensaje
             </button>
+            
+            <div id="formStatus" class="hidden text-center mt-4">
+              <p class="success hidden text-green-400">¡Mensaje enviado correctamente!</p>
+              <p class="error hidden text-red-400">Error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>
+            </div>
           </form>
         </div>
       </div>
@@ -121,7 +119,14 @@ const contactMethods = [
           </p>
           <div class="space-y-4 sm:space-y-6">
             {contactMethods.map(method => (
-              <a href={method.link} class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-darkBlue-700/30 hover:bg-darkBlue-700/50 transition-colors border border-darkBlue-700/50" title={method.description} aria-label={method.description}>
+              <a 
+                href={method.link} 
+                class="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg bg-darkBlue-700/30 hover:bg-darkBlue-700/50 transition-colors border border-darkBlue-700/50" 
+                title={method.description} 
+                aria-label={method.description}
+                target={method.icon !== "location" ? "_blank" : "_self"}
+                rel={method.icon !== "location" ? "noopener noreferrer" : ""}
+              >
                 {method.icon === "mail" && (
                   <svg class="w-5 h-5 sm:w-6 sm:h-6 text-darkBlue-50 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-.4 4.25l-7.07 4.42c-.32.2-.74.2-1.06 0L4.4 8.25a.85.85 0 1 1 .9-1.44L12 11l6.7-4.19a.85.85 0 1 1 .9 1.44z"/>
@@ -159,3 +164,42 @@ const contactMethods = [
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const successMessage = formStatus?.querySelector('.success');
+  const errorMessage = formStatus?.querySelector('.error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Ocultar mensajes previos
+    formStatus?.classList.remove('hidden');
+    successMessage?.classList.add('hidden');
+    errorMessage?.classList.add('hidden');
+    
+    // Obtener los datos del formulario
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (response.ok) {
+        successMessage?.classList.remove('hidden');
+        form.reset();
+      } else {
+        errorMessage?.classList.remove('hidden');
+      }
+    } catch (error) {
+      errorMessage?.classList.remove('hidden');
+    }
+  });
+</script>

@@ -23,8 +23,39 @@ const siteDescription = "Portfolio profesional de desarrollo web full stack. Esp
 		<!-- Estrategia de precarga para fuentes -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <script type="module">
+	   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+       createChat({
+            webhookUrl:'https://n8n.crisbr.es/webhook/1023fcb2-6b5d-46d5-949d-f4cfe1c9c339/chat',
+            webhookConfig: {
+                method: 'POST',
+                headers: {}
+            },
+            target: '#n8n-chat',
+            mode: 'window',
+            chatInputKey: 'chatInput',
+            chatSessionKey: 'sessionId',
+            metadata: {},
+            showWelcomeScreen: false,
+            defaultLanguage: 'es',
+            initialMessages: [
+                'Hola! 👋',
+                'En que puedo ayudarte hoy?'
+            ],
+            i18n: {
+                es: {
+                    title: 'Hi Hola! 👋',
+                    subtitle: "Estoy aquí para ayudarte 24/7.",
+                    footer: '',
+                    getStarted: 'New Conversation',
+                    inputPlaceholder: 'Cual es tu consulta?',
+                },
+            },
+        });
+    </script>
 	</head>
-	</head>
+    
 	<body class="bg-darkBlue-900 text-darkBlue-50 min-h-screen">
 		<slot />
 	</body>
