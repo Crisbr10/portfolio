@@ -46,7 +46,13 @@ const contactMethods = [
       <div class="w-full">
         <div class="bg-darkBlue-800/60 rounded-xl p-5 sm:p-6 md:p-8 shadow-lg border border-darkBlue-700/50 backdrop-blur-sm">
           <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-darkBlue-50">Envíame un mensaje</h3>
-          <form id="contactForm" class="flex flex-col gap-4 sm:gap-5">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-4 sm:gap-5">
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="hidden">
+              <label>
+                No rellenar esto si eres humano: <input name="bot-field" />
+              </label>
+            </div>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
               <label class="flex flex-col gap-2 flex-1">
                 <span class="text-darkBlue-50 font-medium">Nombre</span>
@@ -101,11 +107,6 @@ const contactMethods = [
             >
               Enviar mensaje
             </button>
-            
-            <div id="formStatus" class="hidden text-center mt-4">
-              <p class="success hidden text-green-400">¡Mensaje enviado correctamente!</p>
-              <p class="error hidden text-red-400">Error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>
-            </div>
           </form>
         </div>
       </div>
@@ -164,42 +165,3 @@ const contactMethods = [
     </div>
   </div>
 </section>
-
-<script>
-  const form = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-  const successMessage = formStatus?.querySelector('.success');
-  const errorMessage = formStatus?.querySelector('.error');
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Ocultar mensajes previos
-    formStatus?.classList.remove('hidden');
-    successMessage?.classList.add('hidden');
-    errorMessage?.classList.add('hidden');
-    
-    // Obtener los datos del formulario
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-    
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      
-      if (response.ok) {
-        successMessage?.classList.remove('hidden');
-        form.reset();
-      } else {
-        errorMessage?.classList.remove('hidden');
-      }
-    } catch (error) {
-      errorMessage?.classList.remove('hidden');
-    }
-  });
-</script>
