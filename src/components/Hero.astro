@@ -1,0 +1,108 @@
+---
+import { ArrowRight } from 'lucide-astro';
+---
+
+<section id="hero">
+  <h1 class="hero-name">
+    Cristhian<br /><span>Borges</span>
+  </h1>
+  <p class="hero-role">Desarrollador de Software con Visión de Producto</p>
+  <p class="hero-desc">
+    Fusiono la rapidez del <strong>low-code empresarial</strong> con el rigor del
+    desarrollo tradicional — <strong>TDD, seguridad e infraestructura</strong> —
+    para crear aplicaciones robustas, escalables y mantenibles.
+  </p>
+
+  <a href="#contact" class="btn-solid">
+    Contactar Ahora
+    <ArrowRight size={16} strokeWidth={2.2} />
+  </a>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 56px 80px;
+    flex-direction: column;
+  }
+
+  .hero-name {
+    font-size: clamp(64px, 9vw, 112px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+
+  .hero-name span {
+    background: linear-gradient(
+      135deg,
+      var(--cyan) 0%,
+      #22d3ee 50%,
+      var(--violet) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-role {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    font-size: 15.5px;
+    color: #7a8ca8;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-desc :global(strong) {
+    color: var(--cyan);
+    font-weight: 500;
+  }
+
+  .scroll-hint {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.35;
+  }
+
+  .scroll-hint span {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(180deg, var(--cyan) 0%, transparent 100%);
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: scaleY(1); opacity: 0.35; }
+    50% { transform: scaleY(1.15); opacity: 0.7; }
+  }
+</style>

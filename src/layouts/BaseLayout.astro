@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Cristhian Borges — Desarrollador de Software',
+  description = 'Desarrollador de Software con visión de producto. Fusiono low-code empresarial con desarrollo agéntico, TDD y arquitectura escalable.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Scroll fade-in observer
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+      // Active nav link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-links a');
+
+      window.addEventListener('scroll', () => {
+        let cur = '';
+        sections.forEach((s) => {
+          const el = s as HTMLElement;
+          if (window.scrollY >= el.offsetTop - 100) cur = s.id;
+        });
+        navLinks.forEach((a) => {
+          const active = a.getAttribute('href') === '#' + cur;
+          a.style.color = active ? 'var(--text)' : '';
+        });
+      });
+    </script>
+  </body>
+</html>

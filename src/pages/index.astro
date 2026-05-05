@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProwlerBackground from '../components/ProwlerBackground.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Recorrido from '../components/Recorrido.astro';
+import Tools from '../components/Tools.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <ProwlerBackground />
+  <Nav />
+
+  <Hero />
+  <div class="section-divider"></div>
+
+  <Recorrido />
+  <div class="section-divider"></div>
+
+  <Tools />
+  <div class="section-divider"></div>
+
+  <Contact />
+
+  <Footer />
+</BaseLayout>

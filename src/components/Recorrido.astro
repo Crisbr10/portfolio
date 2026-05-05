@@ -1,0 +1,109 @@
+---
+import { Zap, BookOpen, Briefcase, Cpu } from 'lucide-astro';
+import SectionLabel from './SectionLabel.astro';
+import TimelineItem from './TimelineItem.astro';
+---
+
+<section id="recorrido">
+  <div class="container">
+    <div class="fade-up">
+      <SectionLabel variant="cyan" text="Mi Recorrido" />
+      <h2 class="section-title">
+        Del Autodidacta al<br />Desarrollo Agéntico
+      </h2>
+    </div>
+
+    <div class="timeline">
+      <div class="fade-up">
+        <TimelineItem
+          side="left"
+          phase="Fase 01"
+          title="Curiosidad Inicial"
+          iconColor="cyan"
+          icon={Zap}
+        >
+          Aprendizaje autodidacta y pasión temprana por la tecnología web. La chispa que lo inició todo.
+        </TimelineItem>
+      </div>
+
+      <div class="fade-up delay-1">
+        <TimelineItem
+          side="right"
+          phase="Fase 02"
+          title="Fundamentos Sólidos"
+          iconColor="cyan"
+          icon={BookOpen}
+        >
+          Certificado en Desarrollo de Aplicaciones con Tecnología Web + preparación intensiva para las pruebas libres de <strong>Desarrollo de Aplicaciones Web</strong>.
+        </TimelineItem>
+      </div>
+
+      <div class="fade-up delay-2">
+        <TimelineItem
+          side="left"
+          phase="Fase 03"
+          title="Experiencia Real"
+          iconColor="violet"
+          icon={Briefcase}
+        >
+          3 años con <strong>Velneo</strong> en entornos de producción. Modelado de datos complejos, automatización con <strong>N8N</strong> y entrega de soluciones completas a clientes reales.
+        </TimelineItem>
+      </div>
+
+      <div class="fade-up delay-3">
+        <TimelineItem
+          side="right"
+          phase="Fase 04"
+          title="La Nueva Frontera"
+          iconColor="violet"
+          icon={Cpu}
+        >
+          Desarrollo agéntico con <strong>Claude Code</strong> y <strong>Open Code</strong>. TDD, seguridad e infraestructura escalable: <strong>Astro, React, FastAPI, Supabase, React Native</strong>.
+        </TimelineItem>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #recorrido {
+    padding: 120px 0;
+  }
+
+  #recorrido .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #recorrido :global(.section-title) {
+    margin-bottom: 72px;
+  }
+
+  .timeline {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Vertical spine */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    bottom: 28px;
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      180deg,
+      rgba(6, 182, 212, 0.6) 0%,
+      rgba(6, 182, 212, 0.3) 30%,
+      rgba(139, 92, 246, 0.3) 70%,
+      rgba(139, 92, 246, 0.6) 100%
+    );
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import type { ComponentType } from 'astro';
+
+interface Props {
+  side: 'left' | 'right';
+  phase: string;       // e.g. "Fase 01"
+  title: string;
+  iconColor: 'cyan' | 'violet';
+  icon: any;           // lucide-astro component
+}
+
+const { side, phase, title, iconColor, icon: Icon } = Astro.props;
+---
+
+<div class={`timeline-item ${side}`}>
+  {side === 'left' ? (
+    <>
+      <div class="tl-content">
+        <div class="tl-phase">{phase}</div>
+        <div class="tl-title">{title}</div>
+        <p class="tl-text"><slot /></p>
+      </div>
+      <div class="tl-node">
+        <div class={`tl-icon-ring ${iconColor}`}>
+          <Icon size={18} strokeWidth={1.8} />
+        </div>
+      </div>
+      <div class="tl-empty"></div>
+    </>
+  ) : (
+    <>
+      <div class="tl-empty"></div>
+      <div class="tl-node">
+        <div class={`tl-icon-ring ${iconColor}`}>
+          <Icon size={18} strokeWidth={1.8} />
+        </div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-phase">{phase}</div>
+        <div class="tl-title">{title}</div>
+        <p class="tl-text"><slot /></p>
+      </div>
+    </>
+  )}
+</div>
+
+<style>
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: start;
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .timeline-item.left .tl-content {
+    text-align: right;
+    padding-right: 40px;
+  }
+
+  .timeline-item.right .tl-content {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  .tl-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;
+  }
+
+  .tl-icon-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-bright);
+    background: var(--bg2);
+    flex-shrink: 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .tl-icon-ring.cyan {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.12);
+    color: var(--cyan);
+  }
+
+  .tl-icon-ring.violet {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+    color: var(--violet);
+  }
+
+  .tl-content { padding-top: 8px; }
+
+  .tl-phase {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+
+  .tl-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .tl-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 340px;
+  }
+
+  .tl-text :global(strong) {
+    color: rgba(238, 242, 250, 0.8);
+    font-weight: 500;
+  }
+
+  .timeline-item.left .tl-text { margin-left: auto; }
+  .timeline-item.right .tl-text { margin-right: auto; }
+</style>
