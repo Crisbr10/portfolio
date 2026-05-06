@@ -11,15 +11,18 @@ const githubSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15
     <div class="fade-up">
       <SectionLabel variant="cyan" text="Contacto" />
       <h2 class="section-title">
-        Impulsemos Juntos<br />tu Próximo Proyecto
+        Charlemos
       </h2>
       <p class="contact-intro">
-        ¿Tienes una idea o un desafío técnico? Cuéntame sobre tu proyecto y
-        encontremos la mejor solución juntos.
+        ¿Tienes algo en mente? Escríbeme sin compromiso y lo conversamos.
       </p>
     </div>
 
     <form class="contact-form fade-up delay-1" id="contactForm">
+      <!-- Honeypot — hidden from real users, traps bots -->
+      <div class="hp-field" aria-hidden="true">
+        <input name="website" type="text" autocomplete="off" tabindex="-1" />
+      </div>
       <div class="form-row">
         <div class="field">
           <label for="name">Nombre</label>
@@ -32,9 +35,10 @@ const githubSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15
       </div>
       <div class="field">
         <label for="message">Mensaje</label>
-        <textarea id="message" name="message" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+        <textarea id="message" name="message" placeholder="Contame qué tienes en mente..." required minlength="10"></textarea>
       </div>
       <button type="submit" class="form-submit" id="submitBtn">Enviar Mensaje →</button>
+      <div class="form-message" id="formMessage"></div>
     </form>
 
     <div class="contact-links fade-up delay-2">
@@ -51,20 +55,80 @@ const githubSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15
 </section>
 
 <script>
+  // Capture page load timestamp for timing check
+  const tLoad = Date.now();
+
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   const btn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+  const msgEl = document.getElementById('formMessage') as HTMLDivElement | null;
 
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!btn) return;
-    btn.textContent = '✓ Mensaje enviado';
-    btn.style.background = '#059669';
-    setTimeout(() => {
-      btn.textContent = 'Enviar Mensaje →';
-      btn.style.background = '';
-      form.reset();
-    }, 3000);
-  });
+  if (form && btn && msgEl) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Gather values
+      const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+      const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+      const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+      const website = (form.elements.namedItem('website') as HTMLInputElement).value;
+
+      // Loading state
+      const originalText = btn.textContent;
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      btn.style.cursor = 'wait';
+      msgEl.textContent = '';
+      msgEl.className = 'form-message';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message, website, t_load: tLoad }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          // Success state
+          btn.textContent = '✓ Mensaje enviado';
+          btn.style.background = '#059669';
+          btn.style.opacity = '';
+          btn.style.cursor = '';
+          msgEl.textContent = '¡Gracias! Tu mensaje fue enviado correctamente.';
+          msgEl.className = 'form-message form-success';
+          form.reset();
+
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+            msgEl.textContent = '';
+            msgEl.className = 'form-message';
+          }, 3000);
+        } else {
+          // Error state from server
+          const errorMsg = data.error || 'Ocurrió un error. Intenta de nuevo.';
+          msgEl.textContent = errorMsg;
+          msgEl.className = 'form-message form-error';
+          btn.textContent = originalText;
+          btn.disabled = false;
+          btn.style.opacity = '';
+          btn.style.cursor = '';
+        }
+      } catch (err) {
+        // Network error
+        console.error('Contact form error:', err);
+        msgEl.textContent = 'Error de conexión. Intenta de nuevo.';
+        msgEl.className = 'form-message form-error';
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '';
+        btn.style.cursor = '';
+      }
+    });
+  }
 </script>
 
 <style>
@@ -164,6 +228,33 @@ const githubSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15
   .form-submit:hover {
     box-shadow: 0 0 32px rgba(6, 182, 212, 0.45);
     transform: translateY(-1px);
+  }
+
+  .form-submit:disabled {
+    cursor: wait;
+    transform: none;
+  }
+
+  /* Honeypot — display:none to hide from users and screen readers */
+  .hp-field {
+    display: none;
+  }
+
+  /* Form feedback messages */
+  .form-message {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 0;
+    transition: opacity 0.3s;
+  }
+
+  .form-success {
+    color: #34d399;
+  }
+
+  .form-error {
+    color: #f87171;
   }
 
   .contact-links {
