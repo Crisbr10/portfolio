@@ -1,11 +1,9 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://cristhianborges.dev',
+  site: 'https://www.crisbr.es',
   output: 'static',
   compressHTML: true,
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
 });
